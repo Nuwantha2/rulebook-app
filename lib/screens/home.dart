@@ -14,6 +14,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (index == 1) {
+      Navigator.pushNamed(context, '/rules-hub');
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/card-library');
+    } else if (index == 3) {
+      Navigator.pushNamed(context, '/ledger');
+    }
   }
 
   @override
@@ -83,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'Quick Start',
                               subtitle: 'Setup, round options\n& win condition',
                               onTap: () {
-                                // Navigate to Quick Start
+                                Navigator.pushNamed(context, '/quick-start');
                               },
                             ),
                           ),
@@ -100,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               subtitle:
                                   'Phase 1 & Phase 2\nbreakdown with\nactions',
                               onTap: () {
-                                // Navigate to Turn Flow
+                                Navigator.pushNamed(context, '/turn-flow');
                               },
                             ),
                           ),
@@ -121,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               subtitle:
                                   'Disasters, neutralizers,\njokers & wilds',
                               onTap: () {
-                                // Navigate to Cards
+                                Navigator.pushNamed(context, '/card-library');
                               },
                             ),
                           ),
@@ -137,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'How to Win',
                               subtitle: 'Endgame conditions &\ntiebreakers',
                               onTap: () {
-                                // Navigate to How to Win
+                                Navigator.pushNamed(context, '/how-to-win');
                               },
                             ),
                           ),
