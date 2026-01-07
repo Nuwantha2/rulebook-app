@@ -84,8 +84,3 @@ assets/
 │   └── cards/              # Card images
 └── fonts/                   # Custom fonts (if any)
 ```
-
-## 🛠️ Tech Stack
-
-### Core
-- **Flutt
