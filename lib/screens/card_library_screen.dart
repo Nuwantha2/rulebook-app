@@ -405,10 +405,10 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'number': '1',
       'type': 'Disaster',
       'effect':
-          'Target opponent loses their next income collection from households.',
-      'neutralize': 'Red Ace or higher',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0000_Laag-10.png',
+          'A stroke of bad luck costs you dearly. The opponent rolls the dice immediately and pays the result × 100 (e.g., roll 4 = 400) to the player who dealt this card.',
+      'neutralize': 'Not possible, pay up!',
+      'image': 'assets/images/black/A- Spade - black.png',
+      'image2': 'assets/images/black/A- club - black.png',
     },
     {
       'name': 'Black 2 – Business Failure',
@@ -416,19 +416,21 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect':
           'Target opponent\'s Father becomes inactive. No business profit until healed.',
-      'neutralize': 'Red 2 or higher, or Housekeeper ability',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0001_Laag-11.png',
+      'neutralize':
+          'Red 2 or higher or next round pay 200 to the General Bank.',
+      'image': 'assets/images/black/2- Spade - black.png',
+      'image2': 'assets/images/black/2- club - black.png',
     },
     {
       'name': 'Black 3 – Pirate Raid',
       'number': '3',
       'type': 'Disaster',
       'effect':
-          'If target opponent\'s ship is at sea, it returns to start position.',
-      'neutralize': 'Red 3 or higher, or Captain Jack ability',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0002_Laag-12.png',
+          'If target opponent\'s ship at sea, move 1 position back. When in harbour, opponent loses 400 to the bank.',
+      'neutralize':
+          'Red 3 or higher or next round pay 500 to the General Bank.',
+      'image': 'assets/images/black/3- Spade - black.png',
+      'image2': 'assets/images/black/3- club - black.png',
     },
     {
       'name': 'Black 4 – Sickness',
@@ -436,9 +438,10 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect':
           'Choose one household member of target opponent. That member becomes inactive.',
-      'neutralize': 'Red 4 or higher, or Housekeeper ability',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0003_Laag-13.png',
+      'neutralize':
+          'Red 4 or higher or next round pay 400 to the General Bank or Housekeeper ability.',
+      'image': 'assets/images/black/4- Spade - black.png',
+      'image2': 'assets/images/black/4- club - black.png',
     },
     {
       'name': 'Black 5 – Divorce',
@@ -446,18 +449,21 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect':
           'Target opponent must discard one married daughter if they have any.',
-      'neutralize': 'Red 5 or higher, or Mother\'s protection',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0004_Laag-14.png',
+      'neutralize':
+          'Immediate: Red 5 or higher. Next Round(s): No neutralization possible, arrange a new marriage to recover.',
+      'image': 'assets/images/black/5- Spade - black.png',
+      'image2': 'assets/images/black/5- club - black.png',
     },
     {
       'name': 'Black 6 – Bribe Demand',
       'number': '6',
       'type': 'Disaster',
-      'effect': 'Target opponent must pay 500 money to the General Bank.',
-      'neutralize': 'Red 6 or higher, or Trader Jack ability',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0005_Laag-15.png',
+      'effect':
+          'Target opponent must pay 500 money to the player who dealt this card.',
+      'neutralize':
+          'Immediate: Red 6 or higher. No further resolution, pay or neutralize immediately.',
+      'image': 'assets/images/black/6- Spade - black.png',
+      'image2': 'assets/images/black/6- club - black.png',
     },
     {
       'name': 'Black 7 – Theft',
@@ -465,8 +471,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect': 'Target opponent loses 1000 money to the General Bank.',
       'neutralize': 'Red 7 or higher',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0006_Laag-16.png',
+      'image': 'assets/images/black/7- Spade - black.png',
+      'image2': 'assets/images/black/7- club - black.png',
     },
     {
       'name': 'Black 8 – Storm Damage',
@@ -474,18 +480,21 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect':
           'Damage one of target opponent\'s houses. It provides no rent until repaired.',
-      'neutralize': 'Red 8 or higher, or Builder Jack ability',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0007_Laag-17.png',
+      'neutralize':
+          'Red 8 or higher or next round pay 600 to the General Bank.',
+      'image': 'assets/images/black/8- Spade - black.png',
+      'image2': 'assets/images/black/8- club - black.png',
     },
     {
       'name': 'Black 9 – Infestation',
       'number': '9',
       'type': 'Disaster',
-      'effect': 'Target opponent must pay 1500 to the bank or lose one house.',
-      'neutralize': 'Red 9 or higher',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0008_Laag-18.png',
+      'effect':
+          'One house is infested (place it sideways); no rent income from it until cleaned.',
+      'neutralize':
+          'Immediate: Red 9 or higher. Next Round(s): Pay 600 to the General Bank.',
+      'image': 'assets/images/black/9- Spade - black.png',
+      'image2': 'assets/images/black/9- club - black.png',
     },
     {
       'name': 'Black 10 – House Fire',
@@ -493,9 +502,10 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect':
           'Destroy one of target opponent\'s houses. It is removed from the board.',
-      'neutralize': 'Red 10 or higher, or Red Joker',
-      'image':
-          'assets/images/black/Kaart-symbols-voor-appSpades_0009_Laag-19.png',
+      'neutralize':
+          'Immediate: Red 10. Next Round(s): Pay 1500 to the General Bank to rebuild or use a Red 10.',
+      'image': 'assets/images/black/10- Spade - black.png',
+      'image2': 'assets/images/black/10- club - black.png',
     },
   ];
 
@@ -504,10 +514,10 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'name': 'Red 2',
       'number': '2',
       'type': 'Neutralizer',
-      'effect': 'Cancels Black 2 (Business Failure) or lower disasters.',
+      'effect': 'Cancels Black 2 (Business Failure).',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0001_Laag-11-kopie-2.png',
+      'image': 'assets/images/red/2- Heart - red.png',
+      'image2': 'assets/images/red/2- Diamon - red.png',
     },
     {
       'name': 'Red 3',
@@ -515,8 +525,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 3 (Pirate Raid) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0002_Laag-12-kopie-2.png',
+      'image': 'assets/images/red/3- Heart - red.png',
+      'image2': 'assets/images/red/3- Diamon - red.png',
     },
     {
       'name': 'Red 4',
@@ -524,8 +534,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 4 (Sickness) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0003_Laag-13-kopie-2.png',
+      'image': 'assets/images/red/4- Heart - red.png',
+      'image2': 'assets/images/red/4- Diamon - red.png',
     },
     {
       'name': 'Red 5',
@@ -533,8 +543,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 5 (Divorce) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0004_Laag-14-kopie-2.png',
+      'image': 'assets/images/red/5- Heart - red.png',
+      'image2': 'assets/images/red/5- Diamon - red.png',
     },
     {
       'name': 'Red 6',
@@ -542,8 +552,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 6 (Bribe Demand) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0005_Laag-15-kopie-2.png',
+      'image': 'assets/images/red/6- Heart - red.png',
+      'image2': 'assets/images/red/6- Diamon - red.png',
     },
     {
       'name': 'Red 7',
@@ -551,8 +561,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 7 (Theft) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0006_Laag-16-kopie-2.png',
+      'image': 'assets/images/red/7- Heart - red.png',
+      'image2': 'assets/images/red/7- Diamon - red.png',
     },
     {
       'name': 'Red 8',
@@ -560,8 +570,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 8 (Storm Damage) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0007_Laag-17-kopie-2.png',
+      'image': 'assets/images/red/8- Heart - red.png',
+      'image2': 'assets/images/red/8- Diamon - red.png',
     },
     {
       'name': 'Red 9',
@@ -569,8 +579,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 9 (Infestation) or lower disasters.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0008_Laag-18-kopie-2.png',
+      'image': 'assets/images/red/9- Heart - red.png',
+      'image2': 'assets/images/red/9- Diamon - red.png',
     },
     {
       'name': 'Red 10',
@@ -578,8 +588,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels any Black numbered disaster card.',
       'neutralize': 'Automatic when played',
-      'image':
-          'assets/images/red/Kaart-symbols-voor-appHearts_0009_Laag-19-kopie-2.png',
+      'image': 'assets/images/red/10- Heart - red.png',
+      'image2': 'assets/images/red/10- Diamon - red.png',
     },
   ];
 
@@ -589,7 +599,7 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'number': 'Joker',
       'type': 'Joker',
       'effect':
-          'Immediately neutralize any disaster, or heal all inactive household members.',
+          'Immediately neutralize any (one) disaster, even the Black Ace - Misfortune.',
       'neutralize': 'Cannot be countered',
     },
     {
@@ -663,115 +673,198 @@ class _CardTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hasImage = card['image'] != null && card['image']!.isNotEmpty;
+    final hasImage2 = card['image2'] != null && card['image2']!.isNotEmpty;
+
+    // Extract short name (e.g., "Black Ace – Misfortune" -> "Black Ace\nMisfortune")
+    String displayName = card['name']!;
+    if (displayName.contains('–')) {
+      final parts = displayName.split('–');
+      displayName = '${parts[0].trim()}\n${parts[1].trim()}';
+    } else if (displayName.contains('-')) {
+      final parts = displayName.split('-');
+      displayName = '${parts[0].trim()}\n${parts[1].trim()}';
+    }
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(16),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: accentColor.withOpacity(0.3), width: 2),
+          color: accentColor,
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: accentColor.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
+              color: accentColor.withOpacity(0.3),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Card header with bookmark
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: accentColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-              ),
+            // Header with number and name
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 10, 8, 6),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      card['number']!,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  // Card number
+                  Text(
+                    card['number']!,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const SizedBox(width: 8),
+                  // Card name
+                  Expanded(
+                    child: Text(
+                      displayName,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  // Bookmark button
                   InkWell(
                     onTap: onBookmark,
                     child: Icon(
                       isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
                       color: Colors.white,
-                      size: 18,
+                      size: 20,
                     ),
                   ),
                 ],
               ),
             ),
 
-            // Card image (if available)
-            if (hasImage)
-              Expanded(
-                flex: 3,
-                child: ClipRRect(
-                  child: Image.asset(
-                    card['image']!,
-                    width: double.infinity,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        color: accentColor.withOpacity(0.1),
-                        child: Icon(Icons.style, size: 40, color: accentColor),
-                      );
-                    },
-                  ),
-                ),
-              ),
-
-            // Card content
+            // Card images area
             Expanded(
-              flex: hasImage ? 2 : 3,
-              child: Padding(
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(8, 0, 8, 8),
                 padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF5F0E6),
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Two images side by side
                     Expanded(
-                      child: Text(
-                        card['name']!,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                          height: 1.2,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      child: Row(
+                        children: [
+                          // First image
+                          Expanded(
+                            child: hasImage
+                                ? Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.asset(
+                                        card['image']!,
+                                        fit: BoxFit.contain,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                              return Container(
+                                                color: accentColor.withOpacity(
+                                                  0.1,
+                                                ),
+                                                child: Icon(
+                                                  Icons.style,
+                                                  size: 30,
+                                                  color: accentColor,
+                                                ),
+                                              );
+                                            },
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: accentColor.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Icon(
+                                      Icons.style,
+                                      size: 30,
+                                      color: accentColor,
+                                    ),
+                                  ),
+                          ),
+                          // Second image
+                          Expanded(
+                            child: hasImage2
+                                ? Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.asset(
+                                        card['image2']!,
+                                        fit: BoxFit.contain,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                              return Container(
+                                                color: accentColor.withOpacity(
+                                                  0.1,
+                                                ),
+                                                child: Icon(
+                                                  Icons.style,
+                                                  size: 30,
+                                                  color: accentColor,
+                                                ),
+                                              );
+                                            },
+                                      ),
+                                    ),
+                                  )
+                                : hasImage
+                                ? const SizedBox.shrink()
+                                : Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: accentColor.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Icon(
+                                      Icons.style,
+                                      size: 30,
+                                      color: accentColor,
+                                    ),
+                                  ),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 6),
+                    // Type badge
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 2,
+                        horizontal: 12,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: accentColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: accentColor.withOpacity(0.3)),
                       ),
                       child: Text(
                         card['type']!,
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.bold,
                           color: accentColor,
                         ),

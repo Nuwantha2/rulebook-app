@@ -273,6 +273,7 @@ class _LedgerScreenState extends State<LedgerScreen>
           child: _CardItem(
             name: cardName,
             type: cardData?['type'] ?? 'Card',
+            imagePath: cardData?['image'],
             onTap: () {
               if (cardData != null) {
                 _showCardDetails(cardData, _getCardColor(cardData['type']!));
@@ -428,8 +429,9 @@ class _LedgerScreenState extends State<LedgerScreen>
       'number': '1',
       'type': 'Disaster',
       'effect':
-          'Target opponent loses their next income collection from households.',
-      'neutralize': 'Red Ace or higher',
+          'A stroke of bad luck costs you dearly. The opponent rolls the dice immediately and pays the result × 100 to the player who dealt this card.',
+      'neutralize': 'Not possible, pay up!',
+      'image': 'assets/images/black/A- Spade - black.png',
     },
     {
       'name': 'Black 2 – Business Failure',
@@ -437,15 +439,19 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect':
           'Target opponent\'s Father becomes inactive. No business profit until healed.',
-      'neutralize': 'Red 2 or higher, or Housekeeper ability',
+      'neutralize':
+          'Red 2 or higher or next round pay 200 to the General Bank.',
+      'image': 'assets/images/black/2- Spade - black.png',
     },
     {
       'name': 'Black 3 – Pirate Raid',
       'number': '3',
       'type': 'Disaster',
       'effect':
-          'If target opponent\'s ship is at sea, it returns to start position.',
-      'neutralize': 'Red 3 or higher, or Captain Jack ability',
+          'If target opponent\'s ship at sea, move 1 position back. When in harbour, opponent loses 400 to the bank.',
+      'neutralize':
+          'Red 3 or higher or next round pay 500 to the General Bank.',
+      'image': 'assets/images/black/3- Spade - black.png',
     },
     {
       'name': 'Black 4 – Sickness',
@@ -453,7 +459,9 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect':
           'Choose one household member of target opponent. That member becomes inactive.',
-      'neutralize': 'Red 4 or higher, or Housekeeper ability',
+      'neutralize':
+          'Red 4 or higher or next round pay 400 to the General Bank or Housekeeper ability.',
+      'image': 'assets/images/black/4- Spade - black.png',
     },
     {
       'name': 'Black 5 – Divorce',
@@ -461,14 +469,19 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect':
           'Target opponent must discard one married daughter if they have any.',
-      'neutralize': 'Red 5 or higher, or Mother\'s protection',
+      'neutralize':
+          'Immediate: Red 5 or higher. Next Round(s): No neutralization possible, arrange a new marriage to recover.',
+      'image': 'assets/images/black/5- Spade - black.png',
     },
     {
       'name': 'Black 6 – Bribe Demand',
       'number': '6',
       'type': 'Disaster',
-      'effect': 'Target opponent must pay 500 money to the General Bank.',
-      'neutralize': 'Red 6 or higher, or Trader Jack ability',
+      'effect':
+          'Target opponent must pay 500 money to the player who dealt this card.',
+      'neutralize':
+          'Immediate: Red 6 or higher. No further resolution, pay or neutralize immediately.',
+      'image': 'assets/images/black/6- Spade - black.png',
     },
     {
       'name': 'Black 7 – Theft',
@@ -476,6 +489,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect': 'Target opponent loses 1000 money to the General Bank.',
       'neutralize': 'Red 7 or higher',
+      'image': 'assets/images/black/7- Spade - black.png',
     },
     {
       'name': 'Black 8 – Storm Damage',
@@ -483,14 +497,19 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect':
           'Damage one of target opponent\'s houses. It provides no rent until repaired.',
-      'neutralize': 'Red 8 or higher, or Builder Jack ability',
+      'neutralize':
+          'Red 8 or higher or next round pay 600 to the General Bank.',
+      'image': 'assets/images/black/8- Spade - black.png',
     },
     {
       'name': 'Black 9 – Infestation',
       'number': '9',
       'type': 'Disaster',
-      'effect': 'Target opponent must pay 1500 to the bank or lose one house.',
-      'neutralize': 'Red 9 or higher',
+      'effect':
+          'One house is infested (place it sideways); no rent income from it until cleaned.',
+      'neutralize':
+          'Immediate: Red 9 or higher. Next Round(s): Pay 600 to the General Bank.',
+      'image': 'assets/images/black/9- Spade - black.png',
     },
     {
       'name': 'Black 10 – House Fire',
@@ -498,7 +517,9 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Disaster',
       'effect':
           'Destroy one of target opponent\'s houses. It is removed from the board.',
-      'neutralize': 'Red 10 or higher, or Red Joker',
+      'neutralize':
+          'Immediate: Red 10. Next Round(s): Pay 1500 to the General Bank to rebuild or use a Red 10.',
+      'image': 'assets/images/black/10- Spade - black.png',
     },
   ];
 
@@ -507,8 +528,9 @@ class _LedgerScreenState extends State<LedgerScreen>
       'name': 'Red 2',
       'number': '2',
       'type': 'Neutralizer',
-      'effect': 'Cancels Black 2 (Business Failure) or lower disasters.',
+      'effect': 'Cancels Black 2 (Business Failure).',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/2- Heart - red.png',
     },
     {
       'name': 'Red 3',
@@ -516,6 +538,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 3 (Pirate Raid) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/3- Heart - red.png',
     },
     {
       'name': 'Red 4',
@@ -523,6 +546,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 4 (Sickness) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/4- Heart - red.png',
     },
     {
       'name': 'Red 5',
@@ -530,6 +554,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 5 (Divorce) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/5- Heart - red.png',
     },
     {
       'name': 'Red 6',
@@ -537,6 +562,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 6 (Bribe Demand) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/6- Heart - red.png',
     },
     {
       'name': 'Red 7',
@@ -544,6 +570,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 7 (Theft) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/7- Heart - red.png',
     },
     {
       'name': 'Red 8',
@@ -551,6 +578,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 8 (Storm Damage) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/8- Heart - red.png',
     },
     {
       'name': 'Red 9',
@@ -558,6 +586,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 9 (Infestation) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/9- Heart - red.png',
     },
     {
       'name': 'Red 10',
@@ -565,6 +594,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels any Black numbered disaster card.',
       'neutralize': 'Automatic when played',
+      'image': 'assets/images/red/10- Heart - red.png',
     },
   ];
 
@@ -574,7 +604,7 @@ class _LedgerScreenState extends State<LedgerScreen>
       'number': 'Joker',
       'type': 'Joker',
       'effect':
-          'Immediately neutralize any disaster, or heal all inactive household members.',
+          'Immediately neutralize any (one) disaster, even the Black Ace - Misfortune.',
       'neutralize': 'Cannot be countered',
     },
     {
@@ -633,12 +663,14 @@ class _LedgerScreenState extends State<LedgerScreen>
 class _CardItem extends StatelessWidget {
   final String name;
   final String type;
+  final String? imagePath;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
 
   const _CardItem({
     required this.name,
     required this.type,
+    this.imagePath,
     required this.onTap,
     required this.onLongPress,
   });
@@ -650,28 +682,73 @@ class _CardItem extends StatelessWidget {
       onLongPress: onLongPress,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 4,
+              color: _getCardColor(type).withOpacity(0.15),
+              blurRadius: 8,
               offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Row(
           children: [
+            // Card image container
             Container(
-              width: 40,
-              height: 40,
+              width: 56,
+              height: 56,
               decoration: BoxDecoration(
-                color: _getCardColor(type),
-                borderRadius: BorderRadius.circular(8),
+                gradient: LinearGradient(
+                  colors: [
+                    _getCardColor(type),
+                    _getCardColor(type).withOpacity(0.7),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: _getCardColor(type).withOpacity(0.3),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
               ),
-              child: const Icon(Icons.style, color: Colors.white, size: 22),
+              padding: const EdgeInsets.all(2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: imagePath != null && imagePath!.isNotEmpty
+                      ? Image.asset(
+                          imagePath!,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Center(
+                              child: Icon(
+                                Icons.style,
+                                color: _getCardColor(type),
+                                size: 28,
+                              ),
+                            );
+                          },
+                        )
+                      : Center(
+                          child: Icon(
+                            Icons.style,
+                            color: _getCardColor(type),
+                            size: 28,
+                          ),
+                        ),
+                ),
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -687,14 +764,28 @@ class _CardItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    type,
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: _getCardColor(type).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      type,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: _getCardColor(type),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.bookmark, color: Colors.grey[400], size: 20),
+            Icon(Icons.bookmark, color: _getCardColor(type), size: 22),
           ],
         ),
       ),
@@ -702,8 +793,9 @@ class _CardItem extends StatelessWidget {
   }
 
   Color _getCardColor(String type) {
-    if (type == 'Disaster') return Colors.black87;
-    if (type == 'Neutralizer') return Colors.red;
+    if (type == 'Disaster') return const Color(0xFF2C2C2C);
+    if (type == 'Neutralizer') return const Color(0xFFE53935);
+    if (type == 'Joker') return const Color(0xFF9C27B0);
     if (type == 'Wild Card') return const Color(0xFFD4AF37);
     return const Color(0xFF5B8FA3);
   }

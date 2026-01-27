@@ -150,7 +150,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Father
                       _CharacterCard(
                         name: 'Father',
-                        icon: Icons.business_center,
+                        imagePath: 'assets/images/roles/Father.png',
                         iconColor: const Color(0xFF8B6F47),
                         role: 'Business Leader',
                         ability:
@@ -172,7 +172,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Mother
                       _CharacterCard(
                         name: 'Mother',
-                        icon: Icons.favorite,
+                        imagePath: 'assets/images/roles/Mother.png',
                         iconColor: const Color(0xFFE91E63),
                         role: 'Matchmaker',
                         ability: 'Arranges marriages during Phase 2',
@@ -193,7 +193,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Butler
                       _CharacterCard(
                         name: 'Butler',
-                        icon: Icons.home_work,
+                        imagePath: 'assets/images/roles/Butler.png',
                         iconColor: const Color(0xFF5B8FA3),
                         role: 'Master Builder',
                         ability: 'Builds houses in your district',
@@ -214,7 +214,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Housekeeper
                       _CharacterCard(
                         name: 'Housekeeper',
-                        icon: Icons.healing,
+                        imagePath: 'assets/images/roles/Housekeeper - cook.png',
                         iconColor: const Color(0xFF4CAF50),
                         role: 'Healer',
                         ability:
@@ -236,7 +236,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Oldest Son
                       _CharacterCard(
                         name: 'Oldest Son',
-                        icon: Icons.person,
+                        imagePath: 'assets/images/roles/Oldest Son.png',
                         iconColor: const Color(0xFF2196F3),
                         role: 'Heir',
                         ability: 'May be married when active',
@@ -257,7 +257,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Youngest Son
                       _CharacterCard(
                         name: 'Youngest Son',
-                        icon: Icons.person,
+                        imagePath: 'assets/images/roles/Youngest Son.png',
                         iconColor: const Color(0xFF2196F3),
                         role: 'Heir',
                         ability: 'May be married when active',
@@ -275,7 +275,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Oldest Daughter
                       _CharacterCard(
                         name: 'Oldest Daughter',
-                        icon: Icons.person_outline,
+                        imagePath: 'assets/images/roles/Oldest daughter.png',
                         iconColor: const Color(0xFFE91E63),
                         role: 'Marriage Candidate',
                         ability: 'May be married when active',
@@ -295,7 +295,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Youngest Daughter
                       _CharacterCard(
                         name: 'Youngest Daughter',
-                        icon: Icons.person_outline,
+                        imagePath: 'assets/images/roles/Youngest daughter.png',
                         iconColor: const Color(0xFFE91E63),
                         role: 'Marriage Candidate',
                         ability: 'May be married when active',
@@ -397,7 +397,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Captain
                       _CharacterCard(
                         name: 'Captain',
-                        icon: Icons.sailing,
+                        imagePath: 'assets/images/roles/Captain.png',
                         iconColor: const Color(0xFF0288D1),
                         role: 'Navigator',
                         ability: 'Adds +1 ship movement to every dice roll',
@@ -416,7 +416,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Builder
                       _CharacterCard(
                         name: 'Builder',
-                        icon: Icons.construction,
+                        imagePath: 'assets/images/roles/Builder.png',
                         iconColor: const Color(0xFFFF9800),
                         role: 'Construction Expert',
                         ability: 'Build one extra house per turn',
@@ -438,7 +438,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Trader
                       _CharacterCard(
                         name: 'Trader',
-                        icon: Icons.swap_horiz,
+                        imagePath: 'assets/images/roles/Trader.png',
                         iconColor: const Color(0xFF9C27B0),
                         role: 'Negotiator',
                         ability:
@@ -461,7 +461,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                       // Spy
                       _CharacterCard(
                         name: 'Spy',
-                        icon: Icons.visibility,
+                        imagePath: 'assets/images/roles/Spy.png',
                         iconColor: const Color(0xFF607D8B),
                         role: 'Informant',
                         ability: 'Look at one opponent\'s hand per turn',
@@ -637,7 +637,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
 // Character Card Widget
 class _CharacterCard extends StatelessWidget {
   final String name;
-  final IconData icon;
+  final String? imagePath;
   final Color iconColor;
   final String role;
   final String ability;
@@ -648,7 +648,7 @@ class _CharacterCard extends StatelessWidget {
 
   const _CharacterCard({
     required this.name,
-    required this.icon,
+    this.imagePath,
     required this.iconColor,
     required this.role,
     required this.ability,
@@ -663,12 +663,12 @@ class _CharacterCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+            color: iconColor.withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -676,19 +676,64 @@ class _CharacterCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: onToggle,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
+                  // Character image with gradient border
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 72,
+                    height: 72,
                     decoration: BoxDecoration(
-                      color: iconColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(12),
+                      gradient: LinearGradient(
+                        colors: [iconColor, iconColor.withOpacity(0.6)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: iconColor.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
                     ),
-                    child: Icon(icon, color: iconColor, size: 28),
+                    padding: const EdgeInsets.all(2),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: imagePath != null
+                            ? Image.asset(
+                                imagePath!,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: iconColor.withOpacity(0.1),
+                                    child: Icon(
+                                      Icons.person,
+                                      color: iconColor,
+                                      size: 32,
+                                    ),
+                                  );
+                                },
+                              )
+                            : Container(
+                                color: iconColor.withOpacity(0.1),
+                                child: Icon(
+                                  Icons.person,
+                                  color: iconColor,
+                                  size: 32,
+                                ),
+                              ),
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -703,21 +748,40 @@ class _CharacterCard extends StatelessWidget {
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 2),
-                        Text(
-                          role,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.grey[600],
-                            fontStyle: FontStyle.italic,
+                        const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: iconColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Text(
+                            role,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: iconColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Icon(
-                    isExpanded ? Icons.expand_less : Icons.expand_more,
-                    color: Colors.grey[400],
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: iconColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      isExpanded ? Icons.expand_less : Icons.expand_more,
+                      color: iconColor,
+                      size: 20,
+                    ),
                   ),
                 ],
               ),
