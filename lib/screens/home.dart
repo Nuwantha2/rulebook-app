@@ -15,11 +15,15 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
 
-    if (index == 1) {
+    if (index == 0) {
+      // Already on home
+    } else if (index == 1) {
       Navigator.pushNamed(context, '/rules-hub');
     } else if (index == 2) {
-      Navigator.pushNamed(context, '/card-library');
+      Navigator.pushNamed(context, '/roles-characters');
     } else if (index == 3) {
+      Navigator.pushNamed(context, '/card-library');
+    } else if (index == 4) {
       Navigator.pushNamed(context, '/ledger');
     }
   }
@@ -50,31 +54,110 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // Players & Time info cards on cream background
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              // Players & Time info banner (flat, non-clickable)
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 14,
+                  horizontal: 24,
+                ),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF2A4A5C),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Players section
                     Expanded(
-                      child: _InfoCard(
-                        icon: Icons.people_outline,
-                        label: 'PLAYERS',
-                        value: '2–4',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.people_outline,
+                            color: Colors.white.withOpacity(0.7),
+                            size: 22,
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'PLAYERS',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.6),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              const Text(
+                                '2–4',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    // Divider
+                    Container(
+                      width: 1,
+                      height: 36,
+                      color: Colors.white.withOpacity(0.2),
+                    ),
+                    // Time section
                     Expanded(
-                      child: _InfoCard(
-                        icon: Icons.access_time_outlined,
-                        label: 'TIME',
-                        value: '45–135 min',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.access_time_outlined,
+                            color: Colors.white.withOpacity(0.7),
+                            size: 22,
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'TIME',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.6),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              const Text(
+                                '45–135 min',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
 
-              // Navigation cards grid
+              // Navigation cards grid (matching footer items)
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -85,13 +168,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: AspectRatio(
                             aspectRatio: 1.0,
                             child: _NavigationCard(
-                              icon: Icons.bolt,
-                              iconColor: const Color(0xFFD4AF37),
-                              iconBackground: const Color(0xFFD4AF37),
-                              title: 'Quick Start',
-                              subtitle: 'Setup, round options\n& win condition',
+                              icon: Icons.menu_book,
+                              iconColor: const Color(0xFF5B8FA3),
+                              iconBackground: const Color(0xFF5B8FA3),
+                              title: 'Rules',
+                              subtitle:
+                                  'Complete reference\nguide & game setup',
                               onTap: () {
-                                Navigator.pushNamed(context, '/quick-start');
+                                Navigator.pushNamed(context, '/rules-hub');
                               },
                             ),
                           ),
@@ -101,14 +185,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: AspectRatio(
                             aspectRatio: 1.0,
                             child: _NavigationCard(
-                              icon: Icons.list_alt,
-                              iconColor: const Color(0xFF5B8FA3),
-                              iconBackground: const Color(0xFF5B8FA3),
-                              title: 'Turn Flow',
-                              subtitle:
-                                  'Phase 1 & Phase 2\nbreakdown with\nactions',
+                              icon: Icons.people,
+                              iconColor: const Color(0xFF4A7C59),
+                              iconBackground: const Color(0xFF4A7C59),
+                              title: 'Roles & Characters',
+                              subtitle: 'Jacks and\nCourt Cards',
                               onTap: () {
-                                Navigator.pushNamed(context, '/turn-flow');
+                                Navigator.pushNamed(
+                                  context,
+                                  '/roles-characters',
+                                );
                               },
                             ),
                           ),
@@ -122,10 +208,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: AspectRatio(
                             aspectRatio: 1.0,
                             child: _NavigationCard(
-                              icon: Icons.people,
-                              iconColor: const Color(0xFF4A7C59),
-                              iconBackground: const Color(0xFF4A7C59),
-                              title: 'Cards',
+                              icon: Icons.style,
+                              iconColor: const Color(0xFFD4AF37),
+                              iconBackground: const Color(0xFFD4AF37),
+                              title: 'Action Cards',
                               subtitle:
                                   'Disasters, neutralizers,\njokers & wilds',
                               onTap: () {
@@ -139,13 +225,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: AspectRatio(
                             aspectRatio: 1.0,
                             child: _NavigationCard(
-                              icon: Icons.emoji_events_outlined,
+                              icon: Icons.bookmark,
                               iconColor: const Color(0xFF8B6F47),
                               iconBackground: const Color(0xFF8B6F47),
-                              title: 'How to Win',
-                              subtitle: 'Endgame conditions &\ntiebreakers',
+                              title: 'Bookmarks',
+                              subtitle: 'Your saved rules\n& cards',
                               onTap: () {
-                                Navigator.pushNamed(context, '/how-to-win');
+                                Navigator.pushNamed(context, '/ledger');
                               },
                             ),
                           ),
@@ -175,6 +261,8 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -189,6 +277,11 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'Rules',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),
               activeIcon: Icon(Icons.style),
               label: 'Cards',
@@ -200,58 +293,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _InfoCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-
-  const _InfoCard({
-    required this.icon,
-    required this.label,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF2A4A5C),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(icon, color: Colors.white70, size: 16),
-              const SizedBox(width: 6),
-              Text(
-                label,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.5,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            value,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
       ),
     );
   }

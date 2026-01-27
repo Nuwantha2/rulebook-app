@@ -20,8 +20,10 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
     } else if (index == 2) {
-      Navigator.pushReplacementNamed(context, '/card-library');
+      Navigator.pushReplacementNamed(context, '/roles-characters');
     } else if (index == 3) {
+      Navigator.pushReplacementNamed(context, '/card-library');
+    } else if (index == 4) {
       Navigator.pushReplacementNamed(context, '/ledger');
     }
   }
@@ -407,6 +409,8 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -419,6 +423,11 @@ class _GameSetupScreenState extends State<GameSetupScreen> {
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),

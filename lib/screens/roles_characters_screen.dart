@@ -8,7 +8,7 @@ class RolesCharactersScreen extends StatefulWidget {
 }
 
 class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
-  int _selectedIndex = 1; // Rules tab is selected
+  int _selectedIndex = 2; // Roles tab is selected
   final Map<String, bool> _expandedCards = {};
 
   void _onItemTapped(int index) {
@@ -20,8 +20,10 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
     } else if (index == 2) {
-      Navigator.pushReplacementNamed(context, '/card-library');
+      // Already on roles-characters
     } else if (index == 3) {
+      Navigator.pushReplacementNamed(context, '/card-library');
+    } else if (index == 4) {
       Navigator.pushReplacementNamed(context, '/ledger');
     }
   }
@@ -511,7 +513,7 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
                             _buildWhiteBullet(
                               'Only one Jack may be hired per turn',
                             ),
-                            _buildWhiteBullet('Hiring cost: 300'),
+                            _buildWhiteBullet('Hiring cost: 200'),
                             _buildWhiteBullet('Activation cost: 100 per turn'),
                             _buildWhiteBullet(
                               'Jacks remain yours even if capital drops later',
@@ -547,6 +549,8 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -559,6 +563,11 @@ class _RolesCharactersScreenState extends State<RolesCharactersScreen> {
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),

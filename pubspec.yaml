@@ -53,4 +53,6 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/black/
+    - assets/images/red/
     - assets/videos/

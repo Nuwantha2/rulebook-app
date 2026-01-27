@@ -23,12 +23,10 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.forward();
 
@@ -52,10 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
         fit: StackFit.expand,
         children: [
           // Background image
-          Image.asset(
-            'assets/images/splash_bg.png',
-            fit: BoxFit.cover,
-          ),
+          Image.asset('assets/images/background.jpg', fit: BoxFit.cover),
 
           // Dark overlay for contrast
           Container(

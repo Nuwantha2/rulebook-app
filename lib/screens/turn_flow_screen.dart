@@ -20,8 +20,10 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
     } else if (index == 2) {
-      Navigator.pushReplacementNamed(context, '/card-library');
+      Navigator.pushReplacementNamed(context, '/roles-characters');
     } else if (index == 3) {
+      Navigator.pushReplacementNamed(context, '/card-library');
+    } else if (index == 4) {
       Navigator.pushReplacementNamed(context, '/ledger');
     }
   }
@@ -113,13 +115,13 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                               ),
                             ),
                             const SizedBox(height: 12),
-                            _buildIncomeRow('8 members', '1,200'),
-                            _buildIncomeRow('7 members', '1,000'),
-                            _buildIncomeRow('6 members', '800'),
-                            _buildIncomeRow('5 members', '600'),
-                            _buildIncomeRow('4 members', '400'),
-                            _buildIncomeRow('3 members', '200'),
-                            _buildIncomeRow('≤2 members', '0'),
+                            _buildIncomeRow('14 members', '700'),
+                            _buildIncomeRow('13 members', '500'),
+                            _buildIncomeRow('12 members', '400'),
+                            _buildIncomeRow('11 members', '300'),
+                            _buildIncomeRow('10 members', '200'),
+                            _buildIncomeRow('9 members', '100'),
+                            _buildIncomeRow('< 8 members', '50'),
                             const SizedBox(height: 12),
                             _buildNote(
                               'Active = face-up Court Cards and Jacks',
@@ -145,20 +147,21 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Rent income based on houses built:',
+                              'Rent income based on undamaged houses built:',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const SizedBox(height: 12),
-                            _buildIncomeRow('6 houses', '1,200'),
-                            _buildIncomeRow('5 houses', '1,000'),
-                            _buildIncomeRow('4 houses', '800'),
-                            _buildIncomeRow('3 houses', '600'),
-                            _buildIncomeRow('2 houses', '400'),
-                            _buildIncomeRow('1 house', '200'),
-                            _buildIncomeRow('0 houses', '0'),
+                            _buildIncomeRow(
+                              '6 houses (complete district)',
+                              '1,000',
+                            ),
+                            _buildIncomeRow('5 houses', '700'),
+                            _buildIncomeRow('3 houses', '400'),
+                            _buildIncomeRow('2 houses', '300'),
+                            _buildIncomeRow('1 house', '150'),
                           ],
                         ),
                       ),
@@ -180,10 +183,7 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _buildBullet(
-                              'If you are Director-General: collect 200 from each opponent',
-                            ),
-                            _buildBullet(
-                              'If another player is Director-General: pay them 200',
+                              'If you are Director-General: collect 75 from each opponent',
                             ),
                             _buildBullet(
                               'If no one is Director-General: no taxes are paid',
@@ -221,28 +221,30 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                             ),
                             const SizedBox(height: 16),
                             _buildDiceResult('1', [
-                              'Business Profit: None',
-                              'Ship Movement: 1 space',
+                              'Ship Movement: 1 space (+1 with Captain)',
+                              'Business Profit: 100',
                             ]),
                             _buildDiceResult('2', [
+                              'Ship Movement: 1 space (Captain adds +1)',
                               'Business Profit: 200',
-                              'Ship Movement: 2 spaces',
                             ]),
                             _buildDiceResult('3', [
-                              'Business Profit: 400',
-                              'Ship Movement: 3 spaces',
+                              'Ship Movement: 2 spaces (Captain adds +1)',
+                              'Business Profit: 300',
                             ]),
                             _buildDiceResult('4', [
-                              'Business Profit: 600',
-                              'Ship Movement: 4 spaces',
+                              'Ship Movement: 2 spaces (Captain adds +1)',
+                              'Business Profit: 400',
+                              'Draw 1 Wild Card from the pile',
                             ]),
                             _buildDiceResult('5', [
-                              'Business Profit: 800',
-                              'Ship Movement: 5 spaces',
+                              'Ship Movement: 3 spaces (Captain adds +1)',
+                              'Business Profit: 500',
                             ]),
                             _buildDiceResult('6', [
-                              'Business Profit: 1,000',
-                              'Ship Movement: 6 spaces',
+                              'Ship Movement: 3 spaces (Captain adds +1)',
+                              'Business Profit: 600',
+                              'Claim the Director-General Hat',
                             ]),
                             const SizedBox(height: 12),
                             _buildNote(
@@ -289,7 +291,7 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                             ),
                             _buildBullet('Pay the required cost'),
                             _buildBullet(
-                              'Use Housekeeper to heal Sickness for 400',
+                              'Use Housekeeper to heal sickness for 400 (only once per round!)',
                             ),
                           ],
                         ),
@@ -311,14 +313,64 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                         content: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildBullet('Reach required capital milestone'),
-                            _buildBullet('Pay 300 to General Bank'),
+                            _buildBullet(
+                              'Reach required capital milestone: 8,500 / 9,000 / 9,500 / 10,000',
+                            ),
+                            _buildBullet('Pay 200 to General Bank'),
                             _buildBullet(
                               'Choose: Captain, Builder, Trader, or Spy',
                             ),
                             _buildBullet('Only one Jack per turn'),
                             const SizedBox(height: 12),
                             _buildNote('Activation cost: 100 per turn'),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+
+                      // Build Houses
+                      _TurnFlowCard(
+                        title: 'Build Houses',
+                        icon: Icons.home_work,
+                        iconColor: const Color(0xFF795548),
+                        isExpanded: _expandedCards['build_houses'] ?? false,
+                        onToggle: () {
+                          setState(() {
+                            _expandedCards['build_houses'] =
+                                !(_expandedCards['build_houses'] ?? false);
+                          });
+                        },
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Requirements:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            _buildBullet('Butler must be active'),
+                            _buildBullet('Your ship is docked'),
+                            const SizedBox(height: 12),
+                            const Text(
+                              'Building Options:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            _buildBullet(
+                              'Build 1 house in your district: pay 1,500',
+                            ),
+                            _buildBullet(
+                              'Build 2 if you are Director-General: pay 3,000',
+                            ),
+                            _buildBullet(
+                              'Build 3 with Jack the Builder: pay 4,500',
+                            ),
                           ],
                         ),
                       ),
@@ -377,9 +429,26 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                             _buildBullet('Play a Red Ace'),
                             _buildBullet('Pay 100 administration fee'),
                             _buildBullet('Invite others to invest (min. 100)'),
-                            _buildBullet('If total < 600: canceled'),
+                            const SizedBox(height: 12),
+                            const Text(
+                              'Investment Outcome:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
                             _buildBullet(
-                              'If successful: initiator gains up to 800',
+                              'Each investing player rolls the die to determine their profit:',
+                            ),
+                            _buildBullet(
+                              'Roll 1 or 2: No extra profit, but get full investment back from General Bank',
+                            ),
+                            _buildBullet(
+                              'Roll 3 or 4: Double investment - receive twice contribution from General Bank',
+                            ),
+                            _buildBullet(
+                              'Roll 5 or 6: Triple investment - receive three times contribution from General Bank',
                             ),
                           ],
                         ),
@@ -445,9 +514,6 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
                             _buildWhiteBullet(
                               'From Round 2 onward: draw 2 cards',
                             ),
-                            _buildWhiteBullet(
-                              'Discard down to 7 cards if needed',
-                            ),
                             _buildWhiteBullet('Pass play clockwise'),
                           ],
                         ),
@@ -477,6 +543,8 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -489,6 +557,11 @@ class _TurnFlowScreenState extends State<TurnFlowScreen> {
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),

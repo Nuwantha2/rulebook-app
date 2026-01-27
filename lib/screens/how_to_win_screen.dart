@@ -20,8 +20,10 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
     } else if (index == 2) {
-      Navigator.pushReplacementNamed(context, '/card-library');
+      Navigator.pushReplacementNamed(context, '/roles-characters');
     } else if (index == 3) {
+      Navigator.pushReplacementNamed(context, '/card-library');
+    } else if (index == 4) {
       Navigator.pushReplacementNamed(context, '/ledger');
     }
   }
@@ -112,45 +114,6 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
                       ),
                       const SizedBox(height: 16),
 
-                      // Wealth Calculation
-                      _SectionCard(
-                        title: 'Wealth Calculation',
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Each player\'s total wealth consists of:',
-                              style: TextStyle(
-                                fontSize: 14,
-                                height: 1.5,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            _WealthItem(
-                              emoji: '💰',
-                              label: 'Gold in hand:',
-                              description:
-                                  'All coins the player currently holds',
-                            ),
-                            const SizedBox(height: 12),
-                            _WealthItem(
-                              emoji: '🏛️',
-                              label: 'Property value:',
-                              description:
-                                  '1 gold per building, 2 gold per house',
-                            ),
-                            const SizedBox(height: 12),
-                            _WealthItem(
-                              emoji: '👑',
-                              label: 'Court Cards:',
-                              description: 'Kings = 2 gold, Queens = 1 gold',
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
                       // End-Game Bonuses
                       _SectionCard(
                         title: 'End-Game Bonuses',
@@ -158,18 +121,27 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _BonusItem(
-                              bonus: '+3 gold:',
-                              description: 'Player with most completed streets',
+                              bonus: '+1,500:',
+                              description:
+                                  'Complete District: All 6 houses built and active (no disasters like Storm Damage or Infestation affecting them)',
                             ),
                             const SizedBox(height: 10),
                             _BonusItem(
-                              bonus: '+2 gold:',
-                              description: 'Current Director-General',
+                              bonus: '+1,500:',
+                              description:
+                                  'Director-General: You hold the Director-General Hat',
                             ),
                             const SizedBox(height: 10),
                             _BonusItem(
-                              bonus: '+1 gold:',
-                              description: 'Most Court Cards collected',
+                              bonus: '+1,500:',
+                              description:
+                                  'Large Household: Your active household (face-up Kings, Queens, Jacks) has 10 or more members',
+                            ),
+                            const SizedBox(height: 10),
+                            _BonusItem(
+                              bonus: '+100 each:',
+                              description:
+                                  'Jack Bonus: 100 bonus for every Jack in your household',
                             ),
                           ],
                         ),
@@ -182,24 +154,43 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const Text(
+                              'If two or more players tie for the highest total, resolve it in this order:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                height: 1.5,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
                             _NumberedPoint(
                               number: '1.',
-                              text: 'Most buildings owned',
+                              text:
+                                  'Most Active Houses: Count fully functional houses (undamaged, unaffected by disasters), highest wins.',
                             ),
                             const SizedBox(height: 10),
                             _NumberedPoint(
                               number: '2.',
-                              text: 'Most houses built',
+                              text:
+                                  'Largest Active Household: Count active household members (face-up, not sick), highest wins.',
                             ),
                             const SizedBox(height: 10),
                             _NumberedPoint(
                               number: '3.',
-                              text: 'Most Court Cards held',
+                              text:
+                                  'Most Jacks Hired: Count hired Jacks (active or inactive), highest wins.',
                             ),
                             const SizedBox(height: 10),
                             _NumberedPoint(
                               number: '4.',
-                              text: 'Youngest player wins',
+                              text:
+                                  'Pre-Bonus Capital: Compare money before bonuses, highest wins.',
+                            ),
+                            const SizedBox(height: 10),
+                            _NumberedPoint(
+                              number: '5.',
+                              text:
+                                  'Final Dice Roll: Tied players roll the dice, highest roll wins.',
                             ),
                           ],
                         ),
@@ -229,6 +220,8 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -241,6 +234,11 @@ class _HowToWinScreenState extends State<HowToWinScreen> {
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),
@@ -333,54 +331,6 @@ class _NumberedPoint extends StatelessWidget {
               height: 1.5,
               color: Colors.black87,
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-// Wealth Item Widget
-class _WealthItem extends StatelessWidget {
-  final String emoji;
-  final String label;
-  final String description;
-
-  const _WealthItem({
-    required this.emoji,
-    required this.label,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(emoji, style: const TextStyle(fontSize: 20)),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                description,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[700],
-                  height: 1.4,
-                ),
-              ),
-            ],
           ),
         ),
       ],

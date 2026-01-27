@@ -10,7 +10,7 @@ class CardLibraryScreen extends StatefulWidget {
 
 class _CardLibraryScreenState extends State<CardLibraryScreen>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 2; // Cards tab is selected
+  int _selectedIndex = 3; // Cards tab is selected
   late TabController _tabController;
   final BookmarkManager _bookmarkManager = BookmarkManager();
   final TextEditingController _searchController = TextEditingController();
@@ -37,7 +37,9 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       Navigator.pushReplacementNamed(context, '/home');
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
-    } else if (index == 3) {
+    } else if (index == 2) {
+      Navigator.pushReplacementNamed(context, '/roles-characters');
+    } else if (index == 4) {
       Navigator.pushReplacementNamed(context, '/ledger');
     }
   }
@@ -175,6 +177,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -187,6 +191,11 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style),
@@ -398,6 +407,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Target opponent loses their next income collection from households.',
       'neutralize': 'Red Ace or higher',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0000_Laag-10.png',
     },
     {
       'name': 'Black 2 – Business Failure',
@@ -406,6 +417,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Target opponent\'s Father becomes inactive. No business profit until healed.',
       'neutralize': 'Red 2 or higher, or Housekeeper ability',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0001_Laag-11.png',
     },
     {
       'name': 'Black 3 – Pirate Raid',
@@ -414,6 +427,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'If target opponent\'s ship is at sea, it returns to start position.',
       'neutralize': 'Red 3 or higher, or Captain Jack ability',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0002_Laag-12.png',
     },
     {
       'name': 'Black 4 – Sickness',
@@ -422,6 +437,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Choose one household member of target opponent. That member becomes inactive.',
       'neutralize': 'Red 4 or higher, or Housekeeper ability',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0003_Laag-13.png',
     },
     {
       'name': 'Black 5 – Divorce',
@@ -430,6 +447,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Target opponent must discard one married daughter if they have any.',
       'neutralize': 'Red 5 or higher, or Mother\'s protection',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0004_Laag-14.png',
     },
     {
       'name': 'Black 6 – Bribe Demand',
@@ -437,6 +456,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect': 'Target opponent must pay 500 money to the General Bank.',
       'neutralize': 'Red 6 or higher, or Trader Jack ability',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0005_Laag-15.png',
     },
     {
       'name': 'Black 7 – Theft',
@@ -444,6 +465,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect': 'Target opponent loses 1000 money to the General Bank.',
       'neutralize': 'Red 7 or higher',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0006_Laag-16.png',
     },
     {
       'name': 'Black 8 – Storm Damage',
@@ -452,6 +475,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Damage one of target opponent\'s houses. It provides no rent until repaired.',
       'neutralize': 'Red 8 or higher, or Builder Jack ability',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0007_Laag-17.png',
     },
     {
       'name': 'Black 9 – Infestation',
@@ -459,6 +484,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Disaster',
       'effect': 'Target opponent must pay 1500 to the bank or lose one house.',
       'neutralize': 'Red 9 or higher',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0008_Laag-18.png',
     },
     {
       'name': 'Black 10 – House Fire',
@@ -467,6 +494,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'effect':
           'Destroy one of target opponent\'s houses. It is removed from the board.',
       'neutralize': 'Red 10 or higher, or Red Joker',
+      'image':
+          'assets/images/black/Kaart-symbols-voor-appSpades_0009_Laag-19.png',
     },
   ];
 
@@ -477,6 +506,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 2 (Business Failure) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0001_Laag-11-kopie-2.png',
     },
     {
       'name': 'Red 3',
@@ -484,6 +515,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 3 (Pirate Raid) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0002_Laag-12-kopie-2.png',
     },
     {
       'name': 'Red 4',
@@ -491,6 +524,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 4 (Sickness) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0003_Laag-13-kopie-2.png',
     },
     {
       'name': 'Red 5',
@@ -498,6 +533,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 5 (Divorce) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0004_Laag-14-kopie-2.png',
     },
     {
       'name': 'Red 6',
@@ -505,6 +542,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 6 (Bribe Demand) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0005_Laag-15-kopie-2.png',
     },
     {
       'name': 'Red 7',
@@ -512,6 +551,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 7 (Theft) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0006_Laag-16-kopie-2.png',
     },
     {
       'name': 'Red 8',
@@ -519,6 +560,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 8 (Storm Damage) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0007_Laag-17-kopie-2.png',
     },
     {
       'name': 'Red 9',
@@ -526,6 +569,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels Black 9 (Infestation) or lower disasters.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0008_Laag-18-kopie-2.png',
     },
     {
       'name': 'Red 10',
@@ -533,6 +578,8 @@ class _CardLibraryScreenState extends State<CardLibraryScreen>
       'type': 'Neutralizer',
       'effect': 'Cancels any Black numbered disaster card.',
       'neutralize': 'Automatic when played',
+      'image':
+          'assets/images/red/Kaart-symbols-voor-appHearts_0009_Laag-19-kopie-2.png',
     },
   ];
 
@@ -615,6 +662,8 @@ class _CardTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasImage = card['image'] != null && card['image']!.isNotEmpty;
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
@@ -636,7 +685,7 @@ class _CardTile extends StatelessWidget {
           children: [
             // Card header with bookmark
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: accentColor,
                 borderRadius: const BorderRadius.only(
@@ -652,7 +701,7 @@ class _CardTile extends StatelessWidget {
                       card['number']!,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -662,36 +711,58 @@ class _CardTile extends StatelessWidget {
                     child: Icon(
                       isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
                       color: Colors.white,
-                      size: 20,
+                      size: 18,
                     ),
                   ),
                 ],
               ),
             ),
 
+            // Card image (if available)
+            if (hasImage)
+              Expanded(
+                flex: 3,
+                child: ClipRRect(
+                  child: Image.asset(
+                    card['image']!,
+                    width: double.infinity,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: accentColor.withOpacity(0.1),
+                        child: Icon(Icons.style, size: 40, color: accentColor),
+                      );
+                    },
+                  ),
+                ),
+              ),
+
             // Card content
             Expanded(
+              flex: hasImage ? 2 : 3,
               child: Padding(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      card['name']!,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                        height: 1.3,
+                    Expanded(
+                      child: Text(
+                        card['name']!,
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                          height: 1.2,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 4),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+                        horizontal: 6,
+                        vertical: 2,
                       ),
                       decoration: BoxDecoration(
                         color: accentColor.withOpacity(0.1),
@@ -700,7 +771,7 @@ class _CardTile extends StatelessWidget {
                       child: Text(
                         card['type']!,
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 9,
                           fontWeight: FontWeight.bold,
                           color: accentColor,
                         ),

@@ -10,7 +10,7 @@ class LedgerScreen extends StatefulWidget {
 
 class _LedgerScreenState extends State<LedgerScreen>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 3; // Bookmarks tab is selected
+  int _selectedIndex = 4; // Bookmarks tab is selected
   late TabController _tabController;
   final BookmarkManager _bookmarkManager = BookmarkManager();
 
@@ -35,6 +35,8 @@ class _LedgerScreenState extends State<LedgerScreen>
     } else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/rules-hub');
     } else if (index == 2) {
+      Navigator.pushReplacementNamed(context, '/roles-characters');
+    } else if (index == 3) {
       Navigator.pushReplacementNamed(context, '/card-library');
     }
   }
@@ -212,6 +214,8 @@ class _LedgerScreenState extends State<LedgerScreen>
           backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFF5B8FA3),
           unselectedItemColor: Colors.grey,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -224,6 +228,11 @@ class _LedgerScreenState extends State<LedgerScreen>
               icon: Icon(Icons.menu_book_outlined),
               activeIcon: Icon(Icons.menu_book),
               label: 'Rules',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline),
+              activeIcon: Icon(Icons.people),
+              label: 'Roles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.style_outlined),
